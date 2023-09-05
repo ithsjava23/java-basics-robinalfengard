@@ -7,8 +7,7 @@ public class Menu {
 
     private static ArrayList<HourAndPriceCombined> hourAndPriceCombined = new ArrayList<>();
 
-    public static void run(){
-        Scanner sc = new Scanner(System.in);
+    public static void run(Scanner sc){
         String selection;
         do {
             System.out.println("""
@@ -22,11 +21,11 @@ public class Menu {
             e. Avsluta
             """);
 
-            selection = sc.nextLine();
+            selection = sc.next();
             selection = selection.toLowerCase();
 
             switch (selection) {
-                case "1" -> hourAndPriceCombined = Methods.getInput();
+                case "1" -> hourAndPriceCombined = Methods.getInput(sc);
                 case "2" -> Methods.minMax(hourAndPriceCombined);
                 case "3" -> Methods.sort(hourAndPriceCombined);
                 case "4" -> Methods.showFourBestHoursToCharge(hourAndPriceCombined);
@@ -35,6 +34,7 @@ public class Menu {
                 default -> System.out.print("Enter a valid number or e to exit");
             }
         } while(!selection.equals("e"));
+
 
 
     }

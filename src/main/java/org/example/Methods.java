@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class Methods {
     // Get input from user and return combined list
-    public static ArrayList<HourAndPriceCombined> getInput() {
-        Scanner sc = new Scanner(System.in);
+    public static ArrayList<HourAndPriceCombined> getInput(Scanner sc) {
         ArrayList<HourAndPriceCombined> combinedData = new ArrayList<>();
         for (int i = 0; i < 24; i++) {
             System.out.println("Please enter the price for hour: " + formatHour(i) + "-" + formatHour(i + 1));
@@ -25,21 +24,24 @@ public class Methods {
         for (HourAndPriceCombined listOfPricesAndHour : listOfPricesAndHours) {
             sumOfPrice += listOfPricesAndHour.getPrice();
         }
-
         // Calculate average
-        float average = (float) (sumOfPrice/ listOfPricesAndHours.size());
-        String formattedAverage = String.format("%.2f", average);
+        String formattedAverage = String.format("%.2f", getAverage(sumOfPrice, listOfPricesAndHours.size()));
 
-        System.out.println("Lägsta pris: " + listOfPricesAndHours.get(0).getHour() + ", " + listOfPricesAndHours.get(0).getPrice() + " öre/kWh \n" +
-                "Högsta pris: " + listOfPricesAndHours.get(listOfPricesAndHours.size()-1).getHour() + ", " + listOfPricesAndHours.get(listOfPricesAndHours.size()-1).getPrice() + " öre/kWh \n" +
-                "Medelpris: " + formattedAverage + " öre/kWh");
+        // Format and print result
+        String formattedText = String.format("""
+        Lägsta pris: %s, %s öre/kWh
+        Högsta pris: %s, %s öre/kWh
+        Medelpris: %s öre/kWh
+        """, listOfPricesAndHours.get(0).getHour(), listOfPricesAndHours.get(0).getPrice(), listOfPricesAndHours.get(listOfPricesAndHours.size()-1).getHour(), listOfPricesAndHours.get(listOfPricesAndHours.size()-1).getPrice(), formattedAverage);
+
+        System.out.println(formattedText);
     }
 
     // Sort and print result (descending order)
     public static void sort (ArrayList<HourAndPriceCombined> listOfPricesAndHours) {
         listOfPricesAndHours.sort(Comparator.comparingInt(HourAndPriceCombined::getPrice).reversed());
         for (HourAndPriceCombined listOfPricesAndHour : listOfPricesAndHours) {
-            System.out.println(listOfPricesAndHour.getHour() + " " + listOfPricesAndHour.getPrice() + "öre");
+            System.out.println(listOfPricesAndHour.getHour() + " " + listOfPricesAndHour.getPrice() + " öre");
         }
     }
 
@@ -58,15 +60,19 @@ public class Methods {
         }
 
         // Average öre/kWh formatted and printed
-        float averageOfFourCheapestHours = (float) bestTime/4;
-        String formattedAverage = String.format("%.2f", averageOfFourCheapestHours);
-        System.out.println("Påbörja laddning klockan: " + listOfPricesAndHours.get(indexOfStartingHour).getHour() + "\n" +
-                "Medelpris 4h: " + formattedAverage + "öre/kWh");
+        String firstHour = listOfPricesAndHours.get(indexOfStartingHour).getHour().substring(0,2);
+        String formattedAverage = String.format("%.1f", getAverage(bestTime, 4));
+        System.out.println("Påbörja laddning klockan " + firstHour + "\n" +
+                "Medelpris 4h: " + formattedAverage + " öre/kWh");
     }
 
     public static void visualize(ArrayList<HourAndPriceCombined> hourAndPriceCombined) {
 
 
+    }
+
+    public static float getAverage(double number, int toDivideWith){
+        return (float) (number/ toDivideWith);
     }
 
 
