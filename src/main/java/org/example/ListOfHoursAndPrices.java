@@ -3,22 +3,39 @@ package org.example;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class SortingAndCompareMethods {
+public class ListOfHoursAndPrices {
+    private static final int HOURS = 4;
+    String hour;
+    int price;
+
+
+    public ListOfHoursAndPrices(String hour, int price) {
+        this.hour = hour;
+        this.price = price;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     // Sort and print result (descending order)
-    public static void sort(ArrayList<HourAndPriceCombined> listOfPricesAndHours) {
-        listOfPricesAndHours.sort(Comparator.comparingInt(HourAndPriceCombined::getPrice).reversed());
-        for (HourAndPriceCombined listOfPricesAndHour : listOfPricesAndHours) {
+    public static void sort(ArrayList<ListOfHoursAndPrices> listOfPricesAndHours) {
+        listOfPricesAndHours.sort(Comparator.comparingInt(ListOfHoursAndPrices::getPrice).reversed());
+        for (ListOfHoursAndPrices listOfPricesAndHour : listOfPricesAndHours) {
             System.out.println(listOfPricesAndHour.getHour() + " " + listOfPricesAndHour.getPrice() + " öre");
         }
     }
 
-
     // Check for minimum  maximum and average values
-    public static void minMax(ArrayList<HourAndPriceCombined> listOfPricesAndHours) {
+    public static void minMax(ArrayList<ListOfHoursAndPrices> listOfPricesAndHours) {
         // Sort combined list (ascending order)
-        listOfPricesAndHours.sort(Comparator.comparingInt(HourAndPriceCombined::getPrice));
+        listOfPricesAndHours.sort(Comparator.comparingInt(ListOfHoursAndPrices::getPrice));
         double sumOfPrice = 0;
-        for (HourAndPriceCombined listOfPricesAndHour : listOfPricesAndHours) {
+        for (ListOfHoursAndPrices listOfPricesAndHour : listOfPricesAndHours) {
             sumOfPrice += listOfPricesAndHour.getPrice();
         }
         // Format and print result
@@ -35,7 +52,7 @@ public class SortingAndCompareMethods {
     }
 
     // Show 4 best hours to charge
-    public static void showFourBestHoursToCharge(ArrayList<HourAndPriceCombined> listOfPricesAndHours) {
+    public static void showFourBestHoursToCharge(ArrayList<ListOfHoursAndPrices> listOfPricesAndHours) {
         double bestTime = listOfPricesAndHours.get(0).getPrice() + listOfPricesAndHours.get(1).getPrice() + listOfPricesAndHours.get(2).getPrice() + listOfPricesAndHours.get(3).getPrice();
         Object startChargeAtHour;
         int indexOfStartingHour = 0;
@@ -50,7 +67,7 @@ public class SortingAndCompareMethods {
 
         // Average öre/kWh formatted and printed
         String firstHour = listOfPricesAndHours.get(indexOfStartingHour).getHour().substring(0, 2);
-        String formattedAverage = String.format("%.1f", SupportMethods.getAverage(bestTime, 4));
+        String formattedAverage = String.format("%.1f", SupportMethods.getAverage(bestTime, HOURS));
         System.out.println("Påbörja laddning klockan " + firstHour + "\n" +
                 "Medelpris 4h: " + formattedAverage + " öre/kWh");
     }

@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private static ArrayList<HourAndPriceCombined> hourAndPriceCombined = new ArrayList<>();
+    private static ArrayList<ListOfHoursAndPrices> hourAndPriceCombined = new ArrayList<>();
 
-    public static void run(Scanner sc) {
+    public static void run() {
+        Scanner sc = new Scanner(System.in);
         String selection;
         do {
             System.out.println("""
@@ -25,10 +26,10 @@ public class Menu {
             selection = selection.toLowerCase();
 
             switch (selection) {
-                case "1" -> hourAndPriceCombined = InputMethods.getInput(sc);
-                case "2" -> SortingAndCompareMethods.minMax(hourAndPriceCombined);
-                case "3" -> SortingAndCompareMethods.sort(hourAndPriceCombined);
-                case "4" -> SortingAndCompareMethods.showFourBestHoursToCharge(hourAndPriceCombined);
+                case "1" -> hourAndPriceCombined = InputMethod.getInput(sc);
+                case "2" -> ListOfHoursAndPrices.minMax(hourAndPriceCombined);
+                case "3" -> ListOfHoursAndPrices.sort(hourAndPriceCombined);
+                case "4" -> ListOfHoursAndPrices.showFourBestHoursToCharge(hourAndPriceCombined);
                 case "5" -> VisualizeMethods.visualize(hourAndPriceCombined);
                 case "e" -> System.out.println("Vi ses nästa gång!");
                 default -> System.out.print("Välj ett alternativ eller tryck e för att avsluta");
