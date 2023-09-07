@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-
+        // test
         new Locale("sv","SE");
         Menu.run();
 
