@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class ListOfHoursAndPrices {
     private static final int HOURS = 4;
@@ -46,7 +47,7 @@ public class ListOfHoursAndPrices {
                         """, listOfPricesAndHours.get(0).getHour(), listOfPricesAndHours.get(0).getPrice(),
                 listOfPricesAndHours.get(listOfPricesAndHours.size() - 1).getHour(),
                 listOfPricesAndHours.get(listOfPricesAndHours.size() - 1).getPrice(),
-                String.format("%,2f", SupportMethods.getAverage(sumOfPrice, listOfPricesAndHours.size())));
+                String.format("%.2f", SupportMethods.getAverage(sumOfPrice, listOfPricesAndHours.size())));
 
         System.out.print(formattedText);
     }
