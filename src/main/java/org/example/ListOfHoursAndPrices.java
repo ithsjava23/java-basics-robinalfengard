@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Locale;
 
 public class ListOfHoursAndPrices {
     private static final int HOURS = 4;

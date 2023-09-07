@@ -15,18 +15,17 @@ public class VisualizeMethods {
         int lowestValue =  sortedListOfHoursAndPrices.get(sortedListOfHoursAndPrices.size()-1).price;
 
 
-        double everyFifth = lowestValue < 0 ? (double) (highestValue + lowestValue) / NUMBER_OF_ROWS : (double) (highestValue - lowestValue) / NUMBER_OF_ROWS;
+        int everyFifth = (highestValue - lowestValue)/NUMBER_OF_ROWS;
 
 
-
-        System.out.print(highestValue + "|");
+        System.out.print("   " + highestValue + "|");
         for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
             if (listOfHoursAndPrices.getPrice() == highestValue){
                 System.out.print("  x");
             } else System.out.print("   ");
         }
         System.out.print("\n");
-        double newNumber = highestValue-everyFifth;
+        int newNumber = highestValue-everyFifth;
         System.out.print("   |");
         for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
             if (listOfHoursAndPrices.getPrice()>=newNumber && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() ==highestValue){
