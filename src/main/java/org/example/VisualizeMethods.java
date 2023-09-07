@@ -35,13 +35,13 @@ public class VisualizeMethods {
         System.out.print("\n");
 
 
-            newNumber = newNumber-everyFifth;
-            System.out.print("   |");
-            for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
-                if (listOfHoursAndPrices.getPrice()>=newNumber && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() ==highestValue){
-                    System.out.print("  x");
-                }else System.out.print("   ");
-            }
+        newNumber = newNumber-everyFifth;
+        System.out.print("   |");
+        for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
+            if (listOfHoursAndPrices.getPrice()>=newNumber && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() ==highestValue){
+                System.out.print("  x");
+            }else System.out.print("   ");
+        }
         System.out.print("\n");
 
 
