@@ -7,7 +7,7 @@ public class App {
 
     public static void main(String[] args) {
         // test
-        Locale.setDefault(new Locale("sv","SE"));
+        Locale.setDefault(Locale.US);
         Menu.run();
 
 
