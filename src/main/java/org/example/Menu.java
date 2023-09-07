@@ -11,7 +11,7 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         String selection;
         do {
-            System.out.println("""
+            System.out.print("""
                     Elpriser
                     ========
                     1. Inmatning
@@ -31,7 +31,7 @@ public class Menu {
                 case "3" -> ListOfHoursAndPrices.sort(hourAndPriceCombined);
                 case "4" -> ListOfHoursAndPrices.showFourBestHoursToCharge(hourAndPriceCombined);
                 case "5" -> VisualizeMethods.visualize(hourAndPriceCombined);
-                case "e" -> System.out.println("Vi ses nästa gång!");
+                case "e" -> System.out.print("\nVi ses nästa gång!");
                 default -> System.out.print("Välj ett alternativ eller tryck e för att avsluta");
             }
         } while (!selection.equals("e"));

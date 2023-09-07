@@ -26,7 +26,7 @@ public class ListOfHoursAndPrices {
     public static void sort(ArrayList<ListOfHoursAndPrices> listOfPricesAndHours) {
         listOfPricesAndHours.sort(Comparator.comparingInt(ListOfHoursAndPrices::getPrice).reversed());
         for (ListOfHoursAndPrices listOfPricesAndHour : listOfPricesAndHours) {
-            System.out.println(listOfPricesAndHour.getHour() + " " + listOfPricesAndHour.getPrice() + " öre");
+            System.out.print(listOfPricesAndHour.getHour() + " " + listOfPricesAndHour.getPrice() + " öre\n");
         }
     }
 
@@ -48,7 +48,7 @@ public class ListOfHoursAndPrices {
                 listOfPricesAndHours.get(listOfPricesAndHours.size() - 1).getPrice(),
                 String.format("%.2f", SupportMethods.getAverage(sumOfPrice, listOfPricesAndHours.size())));
 
-        System.out.println(formattedText);
+        System.out.print(formattedText);
     }
 
     // Show 4 best hours to charge
@@ -68,7 +68,7 @@ public class ListOfHoursAndPrices {
         // Average öre/kWh formatted and printed
         String firstHour = listOfPricesAndHours.get(indexOfStartingHour).getHour().substring(0, 2);
         String formattedAverage = String.format("%.1f", SupportMethods.getAverage(bestTime, HOURS));
-        System.out.println("Påbörja laddning klockan " + firstHour + "\n" +
-                "Medelpris 4h: " + formattedAverage + " öre/kWh");
+        System.out.print("Påbörja laddning klockan " + firstHour + "\n" +
+                "Medelpris 4h: " + formattedAverage + " öre/kWh\n");
     }
 }

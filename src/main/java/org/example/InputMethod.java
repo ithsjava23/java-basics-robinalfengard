@@ -10,7 +10,7 @@ public class InputMethod {
 
         ArrayList<ListOfHoursAndPrices> combinedData = new ArrayList<>();
         for (int i = 0; i < 24; i++) {
-            System.out.println("Please enter the price for hour: " + SupportMethods.formatHour(i) + "-" + SupportMethods.formatHour(i + 1));
+            System.out.print("Please enter the price for hour: " + SupportMethods.formatHour(i) + "-" + SupportMethods.formatHour(i + 1)+ "\n");
             String priceInput = sc.next();
 
             combinedData.add(new ListOfHoursAndPrices(SupportMethods.formatHour(i) + "-" + SupportMethods.formatHour(i + 1), Integer.parseInt(priceInput)));
