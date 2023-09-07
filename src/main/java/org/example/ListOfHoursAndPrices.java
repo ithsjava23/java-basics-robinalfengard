@@ -68,7 +68,7 @@ public class ListOfHoursAndPrices {
 
         // Average öre/kWh formatted and printed
         String firstHour = listOfPricesAndHours.get(indexOfStartingHour).getHour().substring(0, 2);
-        String formattedAverage = String.format("%.1f", SupportMethods.getAverage(bestTime, HOURS));
+        String formattedAverage = String.format("%.2f", SupportMethods.getAverage(bestTime, HOURS));
         System.out.print("Påbörja laddning klockan " + firstHour + "\n" +
                 "Medelpris 4h: " + formattedAverage + " öre/kWh\n");
     }

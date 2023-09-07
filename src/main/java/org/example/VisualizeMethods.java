@@ -15,7 +15,8 @@ public class VisualizeMethods {
         int lowestValue =  sortedListOfHoursAndPrices.get(sortedListOfHoursAndPrices.size()-1).price;
 
 
-        int everyFifth = (highestValue - lowestValue)/NUMBER_OF_ROWS;
+        double everyFifth = lowestValue < 0 ? (double) (highestValue + lowestValue) / NUMBER_OF_ROWS : (double) (highestValue - lowestValue) / NUMBER_OF_ROWS;
+
 
 
         System.out.print(highestValue + "|");
@@ -25,7 +26,7 @@ public class VisualizeMethods {
             } else System.out.print("   ");
         }
         System.out.print("\n");
-        int newNumber = highestValue-everyFifth;
+        double newNumber = highestValue-everyFifth;
         System.out.print("   |");
         for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
             if (listOfHoursAndPrices.getPrice()>=newNumber && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() ==highestValue){
