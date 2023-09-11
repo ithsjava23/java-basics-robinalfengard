@@ -17,34 +17,23 @@ public class VisualizeMethods {
 
         // Calculate distance between separators
         double everyFifth = (lowestValue > 0) ? (double) (highestValue - lowestValue) / NUMBER_OF_ROWS : (double) (highestValue + Math.abs(lowestValue)) / NUMBER_OF_ROWS;
-        double newNumber = (highestValue-everyFifth);
-        int newNumberRounded = (int)newNumber;
-        // Print highest value and first loop with check for data that contains the highest value
-        System.out.print(highestValue + "|");
-        for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
-            if (listOfHoursAndPrices.getPrice() == highestValue){
-                System.out.print("  x");
-            } else System.out.print("   ");
-        }
-        System.out.print("\n");
 
         // Print and check for the data between the lowest and high values
-
-        for(int i = 0; i<4; i++){
-                System.out.print("   |");
+        int newNumberRounded = highestValue;
+        for(int i = 0; i<NUMBER_OF_ROWS; i++){
+            System.out.print(i == 0 ? "   " + highestValue + "|" : "   |");
             for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
                 if (listOfHoursAndPrices.getPrice()>=newNumberRounded && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() ==highestValue){
                     System.out.print("  x");
                 }else System.out.print("   ");
             }
             System.out.print("\n");
-            newNumber = (newNumberRounded - everyFifth);
+            double newNumber = (newNumberRounded - everyFifth);
 
             //Adjustment since I subtract instead of add
             if(newNumber<33){
                 newNumberRounded = (int) Math.ceil(newNumber);
             } else newNumberRounded = (int) newNumber;
-
         }
 
 
@@ -63,6 +52,7 @@ public class VisualizeMethods {
         for(int hour = 0; hour<hourAndPriceCombined.size(); hour++){
             System.out.printf("%02d ", hour);
         }
+        System.out.print("\n");
         System.out.print("\n");
     }
 }
