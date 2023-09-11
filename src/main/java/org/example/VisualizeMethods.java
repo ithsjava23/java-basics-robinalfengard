@@ -20,7 +20,7 @@ public class VisualizeMethods {
         double newNumber = (highestValue-everyFifth);
         int newNumberRounded = (int)newNumber;
         // Print highest value and first loop with check for data that contains the highest value
-        System.out.print("   " + highestValue + "|");
+        System.out.print(highestValue + "|");
         for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
             if (listOfHoursAndPrices.getPrice() == highestValue){
                 System.out.print("  x");
