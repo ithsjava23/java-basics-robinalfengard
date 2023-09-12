@@ -5,7 +5,6 @@ public class SupportMethods {
         return (float) (number / toDivideWith);
     }
 
-
     // format hours with zeroes up to hour 10
     public static String formatHour(int hour) {
         if (hour < 10) {

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class VisualizeMethods {
-    private static final int NUMBER_OF_ROWS = 5;
+    private static final int NUMBER_OF_SEPARATIONS = 5;
 
     public static void visualize(ArrayList<ListOfHoursAndPrices> hourAndPriceCombined) {
         ArrayList<ListOfHoursAndPrices> sortedListOfHoursAndPrices = new ArrayList<>(hourAndPriceCombined);
@@ -14,16 +14,15 @@ public class VisualizeMethods {
         int highestValue = sortedListOfHoursAndPrices.get(0).price;
         int lowestValue =  sortedListOfHoursAndPrices.get(sortedListOfHoursAndPrices.size()-1).price;
 
-
         // Calculate distance between separators
-        double everyFifth = (lowestValue > 0) ? (double) (highestValue - lowestValue) / NUMBER_OF_ROWS : (double) (highestValue + Math.abs(lowestValue)) / NUMBER_OF_ROWS;
+        double everyFifth = (lowestValue > 0) ? (double) (highestValue - lowestValue) / NUMBER_OF_SEPARATIONS : (double) (highestValue + Math.abs(lowestValue)) / NUMBER_OF_SEPARATIONS;
 
         // Print and check for the data between the lowest and high values
         int newNumberRounded = highestValue;
-        for(int i = 0; i<NUMBER_OF_ROWS; i++){
-            System.out.print(i == 0 ? "   " + highestValue + "|" : "   |");
+        for(int i = 0; i< NUMBER_OF_SEPARATIONS; i++){
+            System.out.print(i == 0 ?  highestValue + "|" : "   |");
             for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
-                if (listOfHoursAndPrices.getPrice()>=newNumberRounded && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() ==highestValue){
+                if (listOfHoursAndPrices.getPrice()>=newNumberRounded && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() == highestValue){
                     System.out.print("  x");
                 }else System.out.print("   ");
             }
@@ -38,7 +37,7 @@ public class VisualizeMethods {
 
 
         // Print lowest value and check for data that is equal to the lowest value
-        System.out.print((lowestValue < 0) ? lowestValue + "|" : " " + lowestValue + "|");
+        System.out.print((lowestValue < 0) ?  lowestValue + "|" : " " + lowestValue + "|");
         for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
             if (listOfHoursAndPrices.getPrice() == lowestValue || listOfHoursAndPrices.getPrice()>=lowestValue){
                 System.out.print("  x");
@@ -46,13 +45,12 @@ public class VisualizeMethods {
         }
         System.out.print("\n");
 
-        // Print a long line and print the hours of the day
+        // Print a long line to separate and print the hours of the day
         System.out.print("   |------------------------------------------------------------------------\n");
         System.out.print("   | ");
         for(int hour = 0; hour<hourAndPriceCombined.size(); hour++){
             System.out.printf("%02d ", hour);
         }
-        System.out.print("\n");
         System.out.print("\n");
     }
 }
