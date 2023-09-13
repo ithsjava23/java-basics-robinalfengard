@@ -33,6 +33,9 @@ public class VisualizeMethods {
             if(newNumber<33){
                 newNumberRounded = (int) Math.ceil(newNumber);
             } else newNumberRounded = (int) newNumber;
+
+
+
         }
 
 
@@ -47,9 +50,9 @@ public class VisualizeMethods {
 
         // Print a long line to separate and print the hours of the day
         System.out.print("   |------------------------------------------------------------------------\n");
-        System.out.print("   | ");
+        System.out.print("   |");
         for(int hour = 0; hour<hourAndPriceCombined.size(); hour++){
-            System.out.printf("%02d ", hour);
+            System.out.printf(" %02d", hour);
         }
         System.out.print("\n");
     }

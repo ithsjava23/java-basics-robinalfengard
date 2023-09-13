@@ -10,7 +10,7 @@ public class Menu {
     public static void run() {
         Scanner sc = new Scanner(System.in);
         String selection;
-        do {
+        do {// Lägg till check för  att listOfHours måste vara fylld
             System.out.print("""
                     Elpriser
                     ========
