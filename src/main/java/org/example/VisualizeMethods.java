@@ -18,24 +18,17 @@ public class VisualizeMethods {
         double everyFifth = (lowestValue > 0) ? (double) (highestValue - lowestValue) / NUMBER_OF_SEPARATIONS : (double) (highestValue + Math.abs(lowestValue)) / NUMBER_OF_SEPARATIONS;
 
         // Print and check for the data between the lowest and high values
-        int newNumberRounded = highestValue;
+        double newNumber = highestValue;
+
         for(int i = 0; i< NUMBER_OF_SEPARATIONS; i++){
             System.out.print(i == 0 ?  highestValue + "|" : "   |");
             for (ListOfHoursAndPrices listOfHoursAndPrices : hourAndPriceCombined) {
-                if (listOfHoursAndPrices.getPrice()>=newNumberRounded && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() == highestValue){
+                if (listOfHoursAndPrices.getPrice()>=(int)newNumber && listOfHoursAndPrices.getPrice()<highestValue || listOfHoursAndPrices.getPrice() == highestValue){
                     System.out.print("  x");
                 }else System.out.print("   ");
             }
             System.out.print("\n");
-            double newNumber = (newNumberRounded - everyFifth);
-
-            //Adjustment since I subtract instead of add
-            if(newNumber<33){
-                newNumberRounded = (int) Math.ceil(newNumber);
-            } else newNumberRounded = (int) newNumber;
-
-
-
+            newNumber = (newNumber - everyFifth);
         }
 
 
