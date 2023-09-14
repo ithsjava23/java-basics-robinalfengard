@@ -18,7 +18,7 @@ public class InputMethod {
                     price = Integer.parseInt(priceInput);
                     validInput = true;
                 } catch (NumberFormatException ne) {
-                    System.out.print("You must enter a number to proceed");
+                    System.out.print("You must enter a number to proceed\n");
                 }
             }
             combinedHoursAndPrices.add(new ListOfHoursAndPrices(SupportMethods.formatHour(i) + "-" + SupportMethods.formatHour(i + 1), price));

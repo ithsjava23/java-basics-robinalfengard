@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ public class Menu {
     public static void run() {
         Scanner sc = new Scanner(System.in);
         String selection;
-        do {// Lägg till check för  att listOfHours måste vara fylld
+        do {
             System.out.print("""
                     Elpriser
                     ========
@@ -25,14 +24,18 @@ public class Menu {
             selection = sc.next();
             selection = selection.toLowerCase();
 
-            switch (selection) {
-                case "1" -> hourAndPriceCombined = InputMethod.getInput(sc);
-                case "2" -> ListOfHoursAndPrices.minMax(hourAndPriceCombined);
-                case "3" -> ListOfHoursAndPrices.sort(hourAndPriceCombined);
-                case "4" -> ListOfHoursAndPrices.showFourBestHoursToCharge(hourAndPriceCombined);
-                case "5" -> VisualizeMethods.visualize(hourAndPriceCombined);
-                case "e" -> System.out.print("\nVi ses nästa gång!");
-                default -> System.out.print("Välj ett alternativ eller tryck e för att avsluta");
+            try {
+                switch (selection) {
+                    case "1" -> hourAndPriceCombined = InputMethod.getInput(sc);
+                    case "2" -> ListOfHoursAndPrices.minMax(hourAndPriceCombined);
+                    case "3" -> ListOfHoursAndPrices.sort(hourAndPriceCombined);
+                    case "4" -> ListOfHoursAndPrices.showFourBestHoursToCharge(hourAndPriceCombined);
+                    case "5" -> VisualizeMethods.visualize(hourAndPriceCombined);
+                    case "e" -> System.out.print("\nVi ses nästa gång!");
+                    default -> System.out.print("Välj ett alternativ eller tryck e för att avsluta");
+                }
+            } catch (IndexOutOfBoundsException exception){
+                System.out.print("Du måste mata in värden innan du kan beräkna \n");
             }
         } while (!selection.equals("e"));
 

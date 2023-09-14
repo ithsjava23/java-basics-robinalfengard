@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.ArrayList;
+
 public class SupportMethods {
     public static float getAverage(double number, int toDivideWith) {
         return (float) (number / toDivideWith);
