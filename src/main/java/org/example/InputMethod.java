@@ -13,12 +13,12 @@ public class InputMethod {
             int price = 0;
             while (!validInput) {
                 try {
-                    System.out.printf("Please enter the price for hour: %02d-%02d\n", (i), (i + 1));
+                    System.out.printf("Skriv in priset i öre för perioden mellan: %02d-%02d\n", (i), (i + 1));
                     String priceInput = sc.nextLine();
                     price = Integer.parseInt(priceInput);
                     validInput = true;
                 } catch (NumberFormatException ne) {
-                    System.out.print("You must enter a number to proceed\n");
+                    System.out.print("Du måste skriva in en siffra för att komma vidare.\n");
                 }
             }
             combinedHoursAndPrices.add(new ListOfHoursAndPrices(SupportMethods.formatHour(i) + "-" + SupportMethods.formatHour(i + 1), price));

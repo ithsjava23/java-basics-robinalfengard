@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class Menu {
                     e. Avsluta
                     """);
 
-            selection = sc.next();
+            selection = sc.nextLine();
             selection = selection.toLowerCase();
 
             try {
@@ -34,7 +35,7 @@ public class Menu {
                     case "e" -> System.out.print("\nVi ses nästa gång!");
                     default -> System.out.print("Välj ett alternativ eller tryck e för att avsluta");
                 }
-            } catch (IndexOutOfBoundsException exception){
+            } catch (IndexOutOfBoundsException exception) {
                 System.out.print("Du måste mata in värden innan du kan beräkna \n");
             }
         } while (!selection.equals("e"));
